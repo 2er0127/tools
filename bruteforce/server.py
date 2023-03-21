@@ -1,6 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import urllib.parse as parser
 
+# Test Server
 class ServerHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -38,7 +39,7 @@ class ServerHandler(BaseHTTPRequestHandler):
         data = self.rfile.read(int(self.headers['Content-Length']))
         if data is not None:
             data_decode = dict(parser.parse_qs(data.decode()))
-        if data_decode['id'] == ['seona'] and data_decode['pw'] == ['1234']:
+        if data_decode['id'] == ['admin'] and data_decode['pw'] == ['1234']:
             self.wfile.write('login success'.encode())
         else:
             f = open("index_fail.html", 'r')
